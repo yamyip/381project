@@ -17,7 +17,7 @@ Each user has a userID and password;
 
 ]
 
-After successful login, userid is stored in seesion.
+After successful login, username is stored in seesion.
 
 ********************************************
 # Logout
