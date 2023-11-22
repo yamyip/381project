@@ -12,15 +12,15 @@ var documents = {};
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const SECRETKEY = 'cs381'
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
-    secret: 'your_secret_key',
-    resave: true,
-    saveUninitialized: false
+    username: "session",  
+    keys: [SECRETKEY],
 }));
 
 
