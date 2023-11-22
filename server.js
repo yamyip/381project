@@ -250,8 +250,10 @@ app.post('/api/item/id/:id',function(req,res){
 			try{
 				collection.insertOne(req.body);
 				console.log('inserted');
+				res.status(500).json({"message": "Insert completed"});
 			}
 			catch(error){
+				res.status(500).json({"error": "Internal error"});
 				console.log(error)
 			}
 		}catch(error){
@@ -260,7 +262,6 @@ app.post('/api/item/id/:id',function(req,res){
 			client.close();
 			console.log('connection closed');
 		}
-		
 	}
 	else{
 		res.status(500).json({"error":"missing event ID"});
@@ -281,6 +282,7 @@ app.get('/api/item/id/:id',function(req,res){
 			searchDoc(db,searchQuery,function(document){
 				if(document == null){
 					console.log('id not found');
+					res.status(500).json({"error": "id not found"});
 					client.close();
 					console.log('connection closed');
 				}else{
@@ -289,12 +291,10 @@ app.get('/api/item/id/:id',function(req,res){
 					client.close();
 					console.log('connection closed');
 				}
-
 			});
 		}catch(error){
 			console.log(error);
 		}
-		
 	}else{
 		res.status(500).json({"error": "missing event id"});
 	}
@@ -312,9 +312,11 @@ app.post('/api/item/update/id/:id',function(req,res){
 			var DocToUpdate = {};
 			try{
 				collection.updateOne({"id":req.params.id},{$set:req.body});
+				res.status(500).json({"message": "Update completed"});
 			}
 			catch(error){
 				console.log(error);
+				res.status(500).json({"error": "Internal error"});
 			}
 			finally{
 				client.close();
@@ -322,6 +324,7 @@ app.post('/api/item/update/id/:id',function(req,res){
 			}
 		}catch(error){
 			console.log(error);
+			res.status(500).json({"error": "Internal error"});
 		}
 	}
 	else{
@@ -341,10 +344,12 @@ app.delete('/api/item/id/:id',function(req,res){
 			deleteDoc(client.db(dbName),req.params.id,function(result){
 				client.close();
 				console.log('connection closed');
+				res.status(200).json({"message":"delete completed"});
 				console.log('delete completed');
 			});
 		}
 		catch(error){
+			res.status(500).json({"error": "Internal error"});
 			console.log(error);
 		}
 		
