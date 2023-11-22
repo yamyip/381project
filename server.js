@@ -235,4 +235,123 @@ app.get('/logout', function(req, res){
 	res.redirect('/login');
 });
 
+
+//RESTFUL
+
+//create
+app.post('/api/item/id/:id',function(req,res){
+
+	if(req.params.id){
+		console.log(req.body);
+		const client = new MongoClient(mongourl);
+		try{
+			client.connect();
+			collection = client.db(dbName).collection('ToDoList');
+			try{
+				collection.insertOne(req.body);
+				console.log('inserted');
+			}
+			catch(error){
+				console.log(error)
+			}
+		}catch(error){
+			console.log(error);
+		}finally{
+			client.close();
+			console.log('connection closed');
+		}
+		
+	}
+	else{
+		res.status(500).json({"error":"missing event ID"});
+	}
+});
+
+//search
+app.get('/api/item/id/:id',function(req,res){
+
+	if(req.params.id){
+		console.log(req.body);
+		const client = new MongoClient(mongourl);
+		try{
+			client.connect();
+			console.log('connected');
+			db = client.db(dbName);
+			searchQuery = {'id' : req.params.id};
+			searchDoc(db,searchQuery,function(document){
+				if(document == null){
+					console.log('id not found');
+					client.close();
+					console.log('connection closed');
+				}else{
+					console.log('found');
+					res.status(200).json(document);
+					client.close();
+					console.log('connection closed');
+				}
+
+			});
+		}catch(error){
+			console.log(error);
+		}
+		
+	}else{
+		res.status(500).json({"error": "missing event id"});
+	}
+})
+
+//update
+app.post('/api/item/update/id/:id',function(req,res){
+
+	if(req.params.id){
+		const client = new MongoClient(mongourl);
+		try{
+			client.connect();
+			console.log(req.body);
+			collection = client.db(dbName).collection('ToDoList');
+			var DocToUpdate = {};
+			try{
+				collection.updateOne({"id":req.params.id},{$set:req.body});
+			}
+			catch(error){
+				console.log(error);
+			}
+			finally{
+				client.close();
+				console.log('connection closed');
+			}
+		}catch(error){
+			console.log(error);
+		}
+	}
+	else{
+		res.status(500).json({"error": "missing event id"});
+	}
+})
+
+//delete
+app.delete('/api/item/id/:id',function(req,res){
+
+	if(req.params.id){
+		const client = new MongoClient(mongourl);
+		try{
+			client.connect();
+			console.log('connected');
+			console.log('event to be delete :'+ req.params.id);
+			deleteDoc(client.db(dbName),req.params.id,function(result){
+				client.close();
+				console.log('connection closed');
+				console.log('delete completed');
+			});
+		}
+		catch(error){
+			console.log(error);
+		}
+		
+	}else{
+		res.status(500).json({"error": "missing event id"});
+	}
+
+})
+
 app.listen(app.listen(process.env.PORT || 8099));
