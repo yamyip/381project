@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    	label{
+        font-size: 1.3em;
+    }
+</style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+	<h1>Find Your Event With ID</h1>
+	</div>
+	<form action="/search" method="POST">
+	<label for="ID"><b>Please input ID:</b></label><br>
+	<input type="text" id="ID" name="ID" placeholder="Type your event ID" pattern="\d{12}"><br>
+	<small>Format: YYYY-MM-DD-TIME (Only available for digit)</small><br>
+	<input type="submit" value="Search" >
+	<p><a href='/home'>Back to home. </a></p>
+</body>
+</html>

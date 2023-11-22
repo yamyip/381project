@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Update Document</title>
+</head>
+<body>
+    <h1>Update Document</h1>
+    <form action="/update" method="POST">
+	<label for="id">ID:</label>
+        <input type="text" name="id" id="id">
+        <br>
+	
+        <label for="event">New Event:</label>
+        <input type="text" name="event" id="event">
+        <br>
+
+        <label for="venue">New Venue:</label>
+        <input type="text" name="venue" id="venue">
+        <br>
+
+        <label for="detail">New Details:</label>
+        <textarea name="detail" id="detail"></textarea>
+        <br>
+
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

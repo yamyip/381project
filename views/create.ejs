@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do List</title>
+    <style>
+        label {
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Create event</h1>
+    </div>
+    <form action="/create" method="POST">
+        <label for="id"><b>ID:(format:YYYYMMDDTTTT)</b></label><br>
+        <input type="text" id="id" name="id" placeholder="Type your event ID"><br><br>
+        <small>example:202312251900 equals to 2023-12-25-19:00</small><br><br>
+        
+        <label for="event"><b>Event:</b></label><br>
+        <input type="text" id="event" name="event" placeholder="event"><br><br>
+       
+        <label for="venue"><b>Venue:</b></label><br>
+        <input type="text" id="venue" name="venue" placeholder="venue"><br><br>
+       
+        <label for="detail"><b>Detail:</b></label><br>
+        <textarea name="detail" id="detail" cols="50" rows="10" placeholder="Add more details if needed"></textarea><br>
+        <input type="submit" value="create" >
+    </form>   <br>
+    <p><a href='/home'>Back to home. </a></p>
+</body>
+</html>
