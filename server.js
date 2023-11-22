@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({
     username: "session",  
-    keys: [SECRETKEY],
+    keys: [SECRETKEY]
 }));
 
 
