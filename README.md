@@ -72,13 +72,17 @@ Searching by event ID
 
    you can first use the insert code and then use update code to modify the data stored in the database
 
+********************************************
+
  -Get
  	used for search 
 	Path URL : /api/item/id/:id
    	test:
     curl -X GET https://three81project-0h4x.onrender.com/api/item/id/202311231500
 
--Delete
+********************************************
+
+Delete
 	used for delete
  	Path URL : /api/item/id/id 
   	test:
