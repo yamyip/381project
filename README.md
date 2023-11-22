@@ -59,3 +59,27 @@ Searching by event ID
 -	The user can delete the event information through the delete interface by its event ID.
 
 ********************************************
+# RESTFUL
+
+-Post
+	used for insert and update
+ 	Path URL : /api/item/id/:id
+	test:
+   curl -X POST -H "Content-Type: application/json" --data "{\"id\": \"202311231500\", \"event\":\"study\"}" http://localhost:8099/api/item/id/202311231500
+   (for insert)
+   curl -X POST -H "Content-Type: application/json" --data "{\"event\": \"movie\", \"venue\":\"Kwai Fung\" , \"detail\":\"no\" }" http://localhost:8099/api/item/update/id/202311231500
+   (for update)
+
+   you can first use the insert code and then use update code to modify the data stored in the database
+
+ -Get
+ 	used for search 
+	Path URL : /api/item/id/:id
+   	test:
+    curl -X GET http://localhost:8099/api/item/id/202311231500
+
+-Delete
+	used for delete
+ 	Path URL : /api/item/id/id 
+  	test:
+   curl -X DELETE localhost:8099/api/item/id/202311231500
