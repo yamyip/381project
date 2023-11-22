@@ -22,6 +22,8 @@ app.use(session({
     resave: true,
     saveUninitialized: false
 }));
+
+
 app.get('/', function(req, res){
 	if(!req.session.authenticated){
 		console.log("Not authenticated; directing to login");
@@ -234,6 +236,7 @@ app.get('/logout', function(req, res){
 });
 
 
+
 //RESTFUL
 
 //create
@@ -248,11 +251,9 @@ app.post('/api/item/id/:id',function(req,res){
 			try{
 				collection.insertOne(req.body);
 				console.log('inserted');
-				
 			}
 			catch(error){
-				console.log(error);
-				
+				console.log(error)
 			}
 		}catch(error){
 			console.log(error);
@@ -283,7 +284,6 @@ app.get('/api/item/id/:id',function(req,res){
 					console.log('id not found');
 					client.close();
 					console.log('connection closed');
-					
 				}else{
 					console.log('found');
 					res.status(200).json(document);
@@ -294,7 +294,6 @@ app.get('/api/item/id/:id',function(req,res){
 			});
 		}catch(error){
 			console.log(error);
-			
 		}
 		
 	}else{
@@ -314,11 +313,9 @@ app.post('/api/item/update/id/:id',function(req,res){
 			var DocToUpdate = {};
 			try{
 				collection.updateOne({"id":req.params.id},{$set:req.body});
-				
 			}
 			catch(error){
 				console.log(error);
-				
 			}
 			finally{
 				client.close();
@@ -326,7 +323,6 @@ app.post('/api/item/update/id/:id',function(req,res){
 			}
 		}catch(error){
 			console.log(error);
-			
 		}
 	}
 	else{
@@ -347,12 +343,10 @@ app.delete('/api/item/id/:id',function(req,res){
 				client.close();
 				console.log('connection closed');
 				console.log('delete completed');
-				
 			});
 		}
 		catch(error){
 			console.log(error);
-			
 		}
 		
 	}else{
@@ -361,4 +355,8 @@ app.delete('/api/item/id/:id',function(req,res){
 
 })
 
-//app.listen(app.listen(process.env.PORT || 8099));
+
+
+
+
+app.listen(app.listen(process.env.PORT || 8099));
