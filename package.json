@@ -16,5 +16,8 @@
         "express": "*",
         "mongodb": "*",
         "express-session": "^1.17.3"
-    }
+    },
+  "engines": {
+  "node": "16.20.1"
+  }
 }
