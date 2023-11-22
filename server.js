@@ -240,7 +240,9 @@ app.get('/logout', function(req, res){
 
 //create
 app.post('/api/item/id/:id',function(req,res){
-
+	if(!req.session.authenticated){
+		return res.json({"Error": "not authenticated"});
+	}
 	if(req.params.id){
 		console.log(req.body);
 		const client = new MongoClient(mongourl);
@@ -270,7 +272,9 @@ app.post('/api/item/id/:id',function(req,res){
 
 //search
 app.get('/api/item/id/:id',function(req,res){
-
+	if(!req.session.authenticated){
+		return res.json({"Error": "not authenticated"});
+	}
 	if(req.params.id){
 		console.log(req.body);
 		const client = new MongoClient(mongourl);
@@ -302,7 +306,9 @@ app.get('/api/item/id/:id',function(req,res){
 
 //update
 app.post('/api/item/update/id/:id',function(req,res){
-
+	if(!req.session.authenticated){
+		return res.json({"Error": "not authenticated"});
+	}
 	if(req.params.id){
 		const client = new MongoClient(mongourl);
 		try{
@@ -334,7 +340,9 @@ app.post('/api/item/update/id/:id',function(req,res){
 
 //delete
 app.delete('/api/item/id/:id',function(req,res){
-
+	if(!req.session.authenticated){
+		return res.json({"Error": "not authenticated"});
+	}
 	if(req.params.id){
 		const client = new MongoClient(mongourl);
 		try{
