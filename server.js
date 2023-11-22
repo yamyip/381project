@@ -1,5 +1,5 @@
 const assert = require('assert');
-const session = require('express-session');
+const session = require('cookie-session');
 
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
