@@ -53,7 +53,6 @@ app.post('/login', async function(req, res){
 			if(username == req.body.username && password == req.body.password){
 				req.session.authenticated = true;
 				req.session.username = req.body.username;
-				req.session.password = req.body.password;
 				console.log(req.session.username);
 				console.log('Login successed');
 				return res.status(200).render("home");
