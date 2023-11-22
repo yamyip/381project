@@ -23,7 +23,6 @@ app.use(session({
     keys: [SECRETKEY]
 }));
 
-
 app.get('/', function(req, res){
 	if(!req.session.authenticated){
 		console.log("Not authenticated; directing to login");
