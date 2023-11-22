@@ -65,10 +65,8 @@ Searching by event ID
 	1) used for insert and update
  	2) Path URL : /api/item/id/:id
 	3) test:
-   curl -X POST -H "Content-Type: application/json" --data "{\"id\": \"202311231500\", \"event\":\"study\"}" https://three81project-0h4x.onrender.com/api/item/id/202311231500
-
-  
-   curl -X POST -H "Content-Type: application/json" --data "{\"event\": \"movie\", \"venue\":\"Kwai Fung\" , \"detail\":\"no\" }" https://three81project-0h4x.onrender.com/api/item/update/id/202311231500
+   -  curl -X POST -H "Content-Type: application/json" --data "{\"id\": \"202311231500\", \"event\":\"study\"}" https://three81project-0h4x.onrender.com/api/item/id/202311231500
+   -  curl -X POST -H "Content-Type: application/json" --data "{\"event\": \"movie\", \"venue\":\"Kwai Fung\" , \"detail\":\"no\" }" https://three81project-0h4x.onrender.com/api/item/update/id/202311231500
 
 
 - you can first use the insert code and then use update code to modify the data stored in the database
@@ -78,13 +76,11 @@ Searching by event ID
  # Get
  	1) used for search 
 	2) Path URL : /api/item/id/:id
-   	3) test:
-    curl -X GET https://three81project-0h4x.onrender.com/api/item/id/202311231500
+   	3) test: curl -X GET https://three81project-0h4x.onrender.com/api/item/id/202311231500
 
 ********************************************
 
 # Delete
 	1) used for delete
  	2) Path URL : /api/item/id/id 
-  	3) test:
-   curl -X DELETE https://three81project-0h4x.onrender.com/api/item/id/202311231500
+  	3) test: curl -X DELETE https://three81project-0h4x.onrender.com/api/item/id/202311231500
