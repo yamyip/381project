@@ -7,14 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Yip Ding Yam, Lui Ka Ho,Singh Ramandeep",
+  "author": "Yip Ding Yam, Lui Ka Ho, Singh Ramandeep",
   "license": "ISC",
-    "dependencies": {
+  "dependencies": {
         "assert": "^1.4.1",
         "body-parser": "^1.20.2",
         "ejs": "*",
         "express": "*",
         "mongodb": "*",
         "express-session": "^1.17.3"
-    },
+    }
 }
