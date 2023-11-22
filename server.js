@@ -250,9 +250,11 @@ app.post('/api/item/id/:id',function(req,res){
 			try{
 				collection.insertOne(req.body);
 				console.log('inserted');
+				res.status(200).json({"Message":"Insert completed"});
 			}
 			catch(error){
-				console.log(error)
+				console.log(error);
+				res.status(500).json({"error": "Internal server error"});
 			}
 		}catch(error){
 			console.log(error);
@@ -283,6 +285,7 @@ app.get('/api/item/id/:id',function(req,res){
 					console.log('id not found');
 					client.close();
 					console.log('connection closed');
+					res.status(404).json({"Error": "Event not found"});
 				}else{
 					console.log('found');
 					res.status(200).json(document);
@@ -293,6 +296,7 @@ app.get('/api/item/id/:id',function(req,res){
 			});
 		}catch(error){
 			console.log(error);
+			res.status(500).json({"error": "Internal server error"});
 		}
 		
 	}else{
@@ -312,9 +316,11 @@ app.post('/api/item/update/id/:id',function(req,res){
 			var DocToUpdate = {};
 			try{
 				collection.updateOne({"id":req.params.id},{$set:req.body});
+				res.status(200).json({"message": "Update completed"});
 			}
 			catch(error){
 				console.log(error);
+				res.status(500).json({"error": "Internal server error"});
 			}
 			finally{
 				client.close();
@@ -322,6 +328,7 @@ app.post('/api/item/update/id/:id',function(req,res){
 			}
 		}catch(error){
 			console.log(error);
+			res.status(500).json({"error": "Internal server error"});
 		}
 	}
 	else{
@@ -342,10 +349,12 @@ app.delete('/api/item/id/:id',function(req,res){
 				client.close();
 				console.log('connection closed');
 				console.log('delete completed');
+				res.status(200).json({"message": "Delete completed"});
 			});
 		}
 		catch(error){
 			console.log(error);
+			res.status(500).json({"error": "Internal server error"});
 		}
 		
 	}else{
@@ -354,4 +363,4 @@ app.delete('/api/item/id/:id',function(req,res){
 
 })
 
-app.listen(app.listen(process.env.PORT || 8099));
+//app.listen(app.listen(process.env.PORT || 8099));
