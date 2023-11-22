@@ -13,6 +13,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const SECRETKEY = 'cs381'
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -356,5 +357,7 @@ app.delete('/api/item/id/:id',function(req,res){
 
 
 
-
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
