@@ -20,13 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
     secret: 'your_secret_key',
     resave: true,
-    saveUninitialized: false,
-    store: new MongoStore({ 
-        url: 'mongodb+srv://yamyip:Nn785412@cluster0.srzd1zr.mongodb.net/?retryWrites=true&w=majority', // Update with your MongoDB connection string
-        ttl: 60 * 60, // Session TTL (in seconds), optional
-    }),
+    saveUninitialized: false
 }));
-
 app.get('/', function(req, res){
 	if(!req.session.authenticated){
 		console.log("Not authenticated; directing to login");
